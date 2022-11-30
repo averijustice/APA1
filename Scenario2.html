@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>APA1 Scenario2</title>
+</head>
+<body>
+    <h1>Scenario 2</h1>
+    <p>Demonstrate a normal parallel parking scenario. Assume that the length of the parking spot must be > 1.2x the length of the vehicle. The vehicle speed should be limited to < 5 mph.</p>
+    <div id="beforePark">
+        <img src="./img/car_topview_right.png" width="200" style="margin-right: 120px" alt="Image of yellow car facing right">
+        <button onclick="park()">Park</button><img src="./img/car_topview_right.png" width="200" style="margin-left: 120px" alt="Image of yellow car facing right"><br>
+
+        <img src="./img/user_car_topview_right.png" width="200" alt="Image of yellow car facing right with 'user' label">
+    </div>
+    <div id="afterPark" style="display: none">
+        <img src="./img/car_topview_right.png" width="200" style="margin-right: 20px" alt="Image of yellow car facing right">
+        <img src="./img/user_car_topview_right.png" width="200" style="margin-right: 20px" alt="Image of yellow car facing right with 'user' label">
+        <img src="./img/car_topview_right.png" width="200" alt="Image of yellow car facing right"><br>
+        <button onclick="back()" style="alignment: right">Back</button>
+    </div>
+
+<script>
+    function park() {
+        var before = document.getElementById("beforePark");
+        var after = document.getElementById("afterPark");
+        before.style.display = "none";
+        after.style.display = "block";
+    }
+    function back() {
+        var before = document.getElementById("beforePark");
+        var after = document.getElementById("afterPark");
+        before.style.display = "block";
+        after.style.display = "none";
+    }
+</script>
+
+</body>
+</html>

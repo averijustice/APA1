@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>APA1 Scenario1</title>
+</head>
+<body>
+    <h1>Scenario 3</h1>
+    <p>Demonstrate a normal perpendicular parking scenario. The user will use the app to control the system from outside of the car. </p>
+    <div id="beforePark">
+        <img src="./img/car_topview_right.png" width="200" alt="Image of yellow car facing right">
+        <img src="./img/user_car_topview.png" width="200" alt="Image of yellow car facing right with 'user' label">
+        <img src="./img/FordPassAppDraft.png" width="100" alt="FordPass App image">
+        <br><button onclick="park()" style="alignment: right">Park</button><br>
+        <img src="./img/car_topview_right.png" width="200" alt="Image of yellow car facing right">
+    </div>
+    <div id="afterPark" style="display: none">
+        <img src="./img/car_topview_right.png" width="200" alt="Image of yellow car facing right"><br>
+        <img src="./img/user_car_topview_right.png" width="200" style="margin-right: 200px" alt="Image of yellow car facing right with 'user' label"> <img src="./img/FordPassAppCompleteDraft.png" width="100" alt="Image of app"><br>
+        <img src="./img/car_topview_right.png" width="200" alt="Image of yellow car facing right">
+        <button onclick="back()" style="alignment: right">Back</button>
+    </div>
+
+    <script>
+        function park() {
+            var before = document.getElementById("beforePark");
+            var after = document.getElementById("afterPark");
+            before.style.display = "none";
+            after.style.display = "block";
+        }
+        function back() {
+            var before = document.getElementById("beforePark");
+            var after = document.getElementById("afterPark");
+            before.style.display = "block";
+            after.style.display = "none";
+        }
+    </script>
+
+
+    <!--<img src="./img/car_topview_right.png" width="200"><br><br>
+    <img src="./img/car_topview_left.png" width="200">
+    <img src="./img/car_topview_right.png" width="200">-->
+</body>
+</html>
