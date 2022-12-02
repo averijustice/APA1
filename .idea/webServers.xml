@@ -3,9 +3,16 @@
   <component name="WebServers">
     <option name="servers">
       <webServer id="0ea7da07-9eaa-4a95-9db9-9736991fcedd" name="CSE435-APA1" url="https://www.cse.msu.edu/~justic35/">
-        <fileTransfer rootFolder="/user/justic35/web" accessType="SFTP" host="arctic.cse.msu.edu" port="22" sshConfigId="e22e25a1-3a09-4d83-b222-12428a5295ca" sshConfig="justic35@arctic.cse.msu.edu:22 password">
+        <fileTransfer rootFolder="/user/justic35/web" accessType="SFTP" sshConfigId="e22e25a1-3a09-4d83-b222-12428a5295ca" sshConfig="justic35@arctic.cse.msu.edu:22 password">
           <advancedOptions>
             <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+      <webServer id="6dadaad8-3594-4cbb-8fd9-194ff081fded" name="435apa" url="https://www.cse.msu.edu/~agbebite/">
+        <fileTransfer rootFolder="/user/agbebite/web" accessType="SFTP" host="arctic.cse.msu.edu" port="22" sshConfigId="79f5f6b2-cd93-4202-a22f-11ba671792a1" sshConfig="agbebite@arctic.cse.msu.edu:22 password">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" keepAliveTimeout="0" passiveMode="true" shareSSLContext="true" />
           </advancedOptions>
         </fileTransfer>
       </webServer>
