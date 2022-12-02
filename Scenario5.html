@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>APA1 Scenario5</title>
+    <style>
+
+        html, body {
+            background: #1e5799; /* Old browsers */
+            background: -moz-linear-gradient(top,  #1e5799 0%, #7db9e8 100%); /* FF3.6+ */
+            background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#1e5799), color-stop(100%,#7db9e8)); /* Chrome,Safari4+ */
+            background: -webkit-linear-gradient(top,  #1e5799 0%,#7db9e8 100%); /* Chrome10+,Safari5.1+ */
+            background: -o-linear-gradient(top,  #1e5799 0%,#7db9e8 100%); /* Opera 11.10+ */
+            background: -ms-linear-gradient(top,  #1e5799 0%,#7db9e8 100%); /* IE10+ */
+            background: linear-gradient(to bottom,  #1e5799 0%,#7db9e8 100%); /* W3C */
+            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e5799', endColorstr='#7db9e8',GradientType=0 ); /* IE6-9 */
+            min-height:100%;
+        }
+
+        .snowflakes {
+            width: 100%; height: 1200px;
+            position: absolute; top: -90px; left: 0;
+        }
+
+        i, i:after, i:before { background: white; }
+        i {
+            display: inline-block;
+            -webkit-animation: snowflakes 3s linear 2s 20;
+            -moz-animation: snowflakes 3s linear 2s 20;
+            position: relative;
+        }
+        i:after, i:before {
+            height: 100%;
+            width: 100%;
+            content: ".";
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            -webkit-transform: rotate(120deg);
+        }
+        i:before { -webkit-transform: rotate(240deg); }
+
+        @-webkit-keyframes snowflakes {
+            0% {
+                -webkit-transform: translate3d(0,0,0) rotate(0deg) scale(0.6);
+            }
+            100% {
+                -webkit-transform: translate3d(15px, 1200px, 0px) rotate(360deg) scale(0.6);
+            };
+        }
+
+        .snowflakes i:nth-child(3n) {
+            width: 16px; height: 4px;
+            -webkit-animation-duration: 4s;
+            -webkit-animation-iteration-count: 30;
+            -webkit-transform-origin: right -45px;
+        }
+
+        .snowflakes i:nth-child(3n+1) {
+            width: 24px; height: 6px;
+            -webkit-animation-duration: 6s;
+            -webkit-animation-iteration-count: 45;
+            -webkit-transform-origin: right -30px;
+        }
+
+        .snowflakes i:nth-child(3n+2) {
+            width: 32px; height: 8px;
+            -webkit-animation-duration: 8s;
+            -webkit-animation-iteration-count: 60;
+            -webkit-transform-origin: right -15px;
+        }
+
+        /* different delays so they don't all start at the same time */
+        .snowflakes i:nth-child(7n) {
+            opacity:.3;
+            -webkit-animation-delay: 0s;
+            -webkit-animation-timing-function:ease-in;
+        }
+        .snowflakes i:nth-child(7n+1) {
+            opacity:.4;
+            -webkit-animation-delay: 1s;
+            -webkit-animation-timing-function:ease-out;
+        }
+        .snowflakes i:nth-child(7n+2) {
+            opacity:.5;
+            -webkit-animation-delay: 1.5s;
+            -webkit-animation-timing-function:linear;
+        }
+        .snowflakes i:nth-child(7n+3) {
+            opacity:.6;
+            -webkit-animation-delay: 2s;
+            -webkit-animation-timing-function:ease-in;
+        }
+        .snowflakes i:nth-child(7n+4) {
+            opacity:.7;
+            -webkit-animation-delay: 2.5s;
+            -webkit-animation-timing-function:linear;
+        }
+        .snowflakes i:nth-child(7n+5) {
+            opacity:.8;
+            -webkit-animation-delay: 3s;
+            -webkit-animation-timing-function:ease-out;
+        }
+        .snowflakes i:nth-child(7n+6) {
+            opacity:.9;
+            -webkit-animation-delay: 3.5s;
+            -webkit-animation-timing-function:ease-in;
+        }
+
+        .parent {
+            position: relative;
+        }
+
+        .child {
+            position: absolute;
+        }
+
+        #user-car {
+            top: 200px;
+            left: 200px;
+        }
+
+        .animate-scan {
+            animation-name: move-forward;
+            animation-duration: 2s;
+            animation-fill-mode: forwards;
+        }
+
+
+        @keyframes reset {
+            from {
+                margin-top:100px;
+                margin-left: 0px;
+            }
+            to {
+                margin-top: 200px;
+                margin-left: 200px;
+            }
+        }
+
+        @keyframes move-forward {
+
+            from {
+                margin-top: 200px;
+                margin-left: 200px;
+            }
+
+            to {
+                margin-top: 0px;
+                margin-left: 200px;
+            }
+        }
+
+        @keyframes perpendicular-park {
+            from {
+                margin-top: 0px;
+                margin-left: 200px;
+            }
+            50% {
+                margin-top: 70px;
+                margin-left: 200px;
+            }
+            to {
+                margin-top:100px;
+                margin-left: 0px;
+                -webkit-transform: rotate(90deg);
+            }
+        }
+
+
+    </style>
+</head>
+<body>
+<h1>Scenario 5</h1>
+<p>Snow is covering one of the cameras which doesn't allow full vision of the space around the vehicle which causes a failure in the cameras detection ability.</p>
+<p>The user starts the system, but since one of the back cameras is covered in snow the system automatically shut off because all subsystems are not fully functional.
+    The user is alerted of this, and gives control back to the driver.
+     </p>
+<!--Refernce: https://codepen.io/iautomation/pen/VYexBz-->
+<div class="snowflakes"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+<div class="parent">
+    <button onclick="scan()" style="alignment: right">Start System</button>
+    <div id="afterPark" style="display: none">
+        <button onclick="park()" style="alignment: right">Park</button> <br>
+        <button onclick="back()" style="alignment: right">Reset</button>
+    </div>
+    <br>
+    <div id="beforePark" class="child parked-cars" style="display: inline-block">
+        <img src="./img/car_topview_right.png" width="200" alt="Image of yellow car facing right"><br>
+        <img src="./img/car_topview_right.png" width="200" alt="Image of yellow car facing right">
+    </div>
+    <div id="user-car" class="child" style="display: inline-block">
+        <img id="user-car-img" src="./img/user_car_topview.png" width="200" alt="Image of yellow car facing right with 'user' label">
+    </div>
+
+</div>
+<script>
+    function scan() {
+        alert("Unable to perform your request!");
+
+    }
+
+
+</script>
+</body>
+</html>
