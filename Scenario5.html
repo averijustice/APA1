@@ -172,14 +172,12 @@
 </head>
 <body>
 <h1>Scenario 5</h1>
-<p>Snow is covering one of the cameras which doesn't allow full vision of the space around the vehicle which causes a failure in the cameras detection ability.</p>
-<p>The user starts the system, but since one of the back cameras is covered in snow the system automatically shut off because all subsystems are not fully functional.
-    The user is alerted of this, and gives control back to the driver.
-     </p>
+<p>Demonstrate how weather conditions, particularly snow, impacts our systems ability to run. Snow is covering one of the cameras which doesn't allow full vision of the space around the vehicle which causes a failure in the cameras detection ability.</p>
+<p>During this scenario the driver starts the system, but since one of the back cameras is covered in snow the system automatically shuts off because all subsystems are not fully functional. The driver is alerted of this, and our system gives control back to the driver.</p>
 <!--Refernce: https://codepen.io/iautomation/pen/VYexBz-->
 <div class="snowflakes"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
 <div class="parent">
-    <button onclick="scan()" style="alignment: right">Start System</button>
+    <button onclick="scan()" style="alignment: right">Start APA System</button>
     <div id="afterPark" style="display: none">
         <button onclick="park()" style="alignment: right">Park</button> <br>
         <button onclick="back()" style="alignment: right">Reset</button>
@@ -196,7 +194,7 @@
 </div>
 <script>
     function scan() {
-        alert("Unable to perform your request!");
+        alert("Failure in radar and camera system! Unable to perform your request!");
 
     }
 

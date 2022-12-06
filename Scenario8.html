@@ -4,6 +4,76 @@
     <meta charset="UTF-8">
     <title>APA1 Scenario8</title>
     <style>
+        body {font-family: Arial, Helvetica, sans-serif;}
+        * {box-sizing: border-box;}
+
+        /* Button used to open the contact form - fixed at the bottom of the page
+        .open-button {
+            background-color: #555;
+            color: white;
+            padding: 16px 20px;
+            border: none;
+            cursor: pointer;
+            opacity: 0.8;
+            position: fixed;
+            /*bottom: 23px;
+            right: 28px;
+            width: 280px;
+        }*/
+
+        /* The popup form - hidden by default */
+        .form-popup {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            right: 15px;
+            border: 3px solid #f1f1f1;
+            z-index: 9;
+        }
+
+        /* Add styles to the form container */
+        .form-container {
+            max-width: 300px;
+            padding: 10px;
+            background-color: white;
+        }
+
+        /* Full-width input fields */
+        .form-container input[type=text], .form-container input[type=password] {
+            width: 100%;
+            padding: 15px;
+            margin: 5px 0 22px 0;
+            border: none;
+            background: #f1f1f1;
+        }
+
+        /* When the inputs get focus, do something */
+        .form-container input[type=text]:focus, .form-container input[type=password]:focus {
+            background-color: #ddd;
+            outline: none;
+        }
+
+        /* Set a style for the submit/login button */
+        .form-container .btn {
+            background-color: #04AA6D;
+            color: white;
+            padding: 16px 20px;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            margin-bottom:10px;
+            opacity: 0.8;
+        }
+
+        /* Add a red background color to the cancel button */
+        .form-container .cancel {
+            background-color: red;
+        }
+
+        /* Add some hover effects to buttons */
+        .form-container .btn:hover, .open-button:hover {
+            opacity: 1;
+        }
 
         /* Set display to none for image*/
         #image {
@@ -83,22 +153,43 @@
 </head>
 <body>
 <h1>Scenario 8</h1>
-<p>In order to use the Ford Pass App, the driver must confirm their identity and their vehicle.</p>
-<p>The driver starts the system via the Ford Pass App, and must confirm information to prove their identity.</p>
-<div>
+<p>Demonstrate the confirmation process before the driver uses the FordPass application. In order to use the FordPass App, the driver must confirm their identity and their vehicle.</p>
+<p>The driver starts the system via the FordPass App, and must confirm information to prove their identity.
+</p>
 
 
-    <!-- Add id to image -->
+   <!--Add id to image
     <img id="image" src=
             "./img/mobile-app.png"
          alt="GFG image" />
 </div>
-
 <button type="button"
         onclick="show()" id="btnID">
-    Go to App
-</button>
+    Confirm Identity
+</button>-->
+
 <div class="parent">
+    <button class="open-button" onclick="openForm()">Login to FordPass App</button>
+
+    <div class="form-popup" id="myForm">
+        <form action="/action_page.php" class="form-container">
+            <h1>Login</h1>
+
+            <label for="email"><b>Email</b></label>
+            <input type="text" placeholder="Enter Email" name="email" required>
+
+            <label for="psw"><b>Password</b></label>
+            <input type="password" placeholder="Enter Password" name="psw" required>
+
+            <img id="image" src=
+                    "./img/mobile-app.png"
+                 alt="GFG image" />
+
+            <button type="button" class="btn" onclick="show()">Confirm Identity</button>
+            <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+        </form>
+    </div>
+
     <!--<div id="pop-image" style="display: none">
         <button onclick="scan()" id="btn" style="alignment: right">Go to App</button>
         <img id= "image" src="./img/mobile-app.png" width="200" alt="Image of yellow car facing right"
@@ -107,19 +198,34 @@
         <button onclick="park()" style="alignment: right">Park</button> <br>
         <button onclick="back()" style="alignment: right">Reset</button>
     </div>-->
+
     <br>
     <div id="beforePark" class="child parked-cars" style="display: inline-block">
         <img src="./img/car_topview_right.png" width="200" alt="Image of yellow car facing right">
         <img src="./img/car_topview_right.png" width="200" alt="Image of yellow car facing right">
 
-        <!--<img src="./img/supermarket.png" width="200" alt="Image of supermarket"><br>-->
 
+
+    </div>
+    <div id="afterPark" style="display: none">
+        <img src="./img/car_topview_right.png" width="200" style="margin-right: 20px" alt="Image of yellow car facing right">
+        <div style="position: absolute; top: 165px; left: 245px"><img src="./img/red_user_car_right.png" width="200" alt="Image of red car facing right with 'user' label"></div>
+        <img src="./img/car_topview_right.png" width="200" style="margin-left: 250px" alt="Image of yellow car facing right"><br>
+        <button onclick="back()" style="alignment: right">Back</button>
     </div>
     <div id="user-car" class="child" style="display: inline-block">
         <div style="position: absolute; top: 40px"><img src="./img/red_user_car_right.png" width="200" alt="Image of red car facing right with 'user' label"></div>
     </div>
 </div>
 <script>
+
+    function openForm() {
+        document.getElementById("myForm").style.display = "block";
+    }
+
+    function closeForm() {
+        document.getElementById("myForm").style.display = "none";
+    }
 
     function back() {
         var targetElement = document.getElementById("user-car");
@@ -129,6 +235,7 @@
         after.style.display = "none";
     }
 
+
     function show() {
 
         /* Access image by id and change
@@ -136,9 +243,10 @@
         document.getElementById('image')
             .style.display = "block";
 
-        document.getElementById('btnID')
+        document.getElementById('myForm')
             .style.display = "none";
     }
+
 </script>
 </body>
 </html>
