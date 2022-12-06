@@ -11,11 +11,13 @@
 
         .child {
             position: absolute;
+            margin-bottom: 5px;
+            margin-top: 5px;
         }
 
         #user-car {
             top: 200px;
-            left: 200px;
+            left: 210px;
         }
 
         .animate-scan {
@@ -25,7 +27,7 @@
         }
 
         .animate-park {
-            animation: perpendicular-park 4s;
+            animation: perpendicular-park 2s;
             /* Preserve the effect of the animation at ending */
             animation-fill-mode: forwards;
         }
@@ -36,9 +38,13 @@
         }
 
         @keyframes reset {
-           100% {
+            from {
+                margin-top:100px;
+                margin-left: 0px;
+            }
+            to {
                 margin-top: 200px;
-                margin-left: 200px;
+                margin-left: 220px;
             }
         }
 
@@ -46,29 +52,30 @@
 
             from {
                 margin-top: 200px;
-                margin-left: 200px;
+                margin-left: 220px;
             }
 
             to {
                 margin-top: 0px;
-                margin-left: 200px;
+                margin-left: 220px;
             }
         }
 
         @keyframes perpendicular-park {
             from {
                 margin-top: 0px;
-                margin-left: 200px;
-            }
-            50% {
-                margin-top: 70px;
-                margin-left: 200px;
+                margin-left: 220px;
             }
             to {
-                margin-top:100px;
-                margin-left: 0px;
-                -webkit-transform: rotate(90deg);
+                margin-top: 85px;
+                margin-left: 220px;
+                -webkit-transform: rotate(80deg);
             }
+            /*to {
+                margin-top:115px;
+                margin-left: 50px;
+                -webkit-transform: rotate(90deg);
+            }*/
         }
     </style>
 </head>
@@ -93,7 +100,7 @@ out of the spot. </p>
         <img src="./img/car_topview_right.png" width="200" style="margin-top: -32px"alt="Image of yellow car facing right">
     </div>
     <div id="user-car" class="child" style="display: inline-block">
-        <img id="user-car-img" src="./img/user_car_topview.png" width="200" alt="Image of yellow car facing right with 'user' label">
+        <img id="user-car-img" src="./img/red_user_car.png" width="95" alt="Image of red car facing the top of the page with 'user' label">
     </div>
 </div>
 <script>

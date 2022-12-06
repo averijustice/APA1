@@ -1,44 +1,147 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
     <title>APA1 Scenario 3</title>
+    <style>
+
+        .parent {
+            position: relative;
+        }
+
+        .app {
+            position: absolute;
+            margin-left: 400px;
+        }
+
+        .child {
+            position: absolute;
+            margin-bottom: 5px;
+            margin-top: 5px;
+        }
+
+        #user-car {
+            top: 200px;
+            left: 210px;
+        }
+
+        .animate-scan {
+            animation-name: move-forward;
+            animation-duration: 2s;
+            animation-fill-mode: forwards;
+        }
+
+        .animate-park {
+            animation: perpendicular-park 2s;
+            /* Preserve the effect of the animation at ending */
+            animation-fill-mode: forwards;
+        }
+
+        .reset {
+            animation-name: reset;
+            animation-fill-mode: forwards;
+        }
+
+        @keyframes reset {
+            from {
+                margin-top:100px;
+                margin-left: 0px;
+            }
+            to {
+                margin-top: 200px;
+                margin-left: 220px;
+            }
+        }
+
+        @keyframes move-forward {
+
+            from {
+                margin-top: 200px;
+                margin-left: 220px;
+            }
+
+            to {
+                margin-top: 0px;
+                margin-left: 220px;
+            }
+        }
+
+        @keyframes perpendicular-park {
+            from {
+                margin-top: 0px;
+                margin-left: 220px;
+            }
+            50% {
+                margin-top: 85px;
+                margin-left: 220px;
+            }
+            to {
+                margin-top:115px;
+                margin-left: 50px;
+                -webkit-transform: rotate(90deg);
+            }
+        }
+    </style>
 </head>
 <body>
-    <h1>Scenario 3</h1>
-    <p>Demonstrate a normal perpendicular parking scenario. The user will use the app to control the system from outside of the car. </p>
-    <div id="beforePark">
-        <img src="./img/car_topview_right.png" width="200" alt="Image of yellow car facing right">
-        <img src="./img/user_car_topview.png" width="200" alt="Image of yellow car facing right with 'user' label">
-        <img src="./img/FordPassAppDraft.png" width="100" alt="FordPass App image">
-        <br><button onclick="park()" style="alignment: right">Park</button><br>
-        <img src="./img/car_topview_right.png" width="200" alt="Image of yellow car facing right">
-    </div>
+<h1>Scenario 3</h1>
+<p>Demonstrate a normal perpendicular parking scenario. The user will use the app to control the system from outside of the car. </p>
+<div class="parent">
+    <button onclick="scan()" style="alignment: right">Start system</button>
     <div id="afterPark" style="display: none">
-        <img src="./img/car_topview_right.png" width="200" alt="Image of yellow car facing right"><br>
-        <img src="./img/user_car_topview_right.png" width="200" style="margin-right: 200px" alt="Image of yellow car facing right with 'user' label"> <img src="./img/FordPassAppCompleteDraft.png" width="100" alt="Image of app"><br>
-        <img src="./img/car_topview_right.png" width="200" alt="Image of yellow car facing right">
-        <button onclick="back()" style="alignment: right">Back</button>
+        <button onclick="park()" style="alignment: right">Park</button> <br>
+        <button onclick="back()" style="alignment: right">Reset</button>
     </div>
+    <div class="app">
+        <img style="display: none" id="appStart" src="./img/FordPassAppDraft.png" width="100" style="left: 200px" alt="FordPass App image">
+        <img style="display: none" id="appEnd" src="./img/FordPassAppCompleteDraft.png" width="100" style="left: 200px" alt="FordPass App image">
+    </div>
+    <br>
+    <div id="beforePark" class="child parked-cars" style="display: inline-block">
+        <img src="./img/car_topview_right.png" width="200" alt="Image of yellow car facing right">
+        <br><br>
+        <img src="./img/car_topview_right.png" width="200" alt="Image of yellow car facing right">
+    </div>
+    <div id="user-car" class="child" style="display: inline-block">
+        <img id="user-car-img" src="./img/red_user_car.png" width="95" alt="Image of red car facing the top of the page with 'user' label">
+    </div>
+</div>
+<script>
+    function scan() {
+        var targetElement = document.getElementById("user-car");
+        // Changing user-car's class to "animate-scan" triggers the animations
+        targetElement.className = "animate-scan";
 
-    <script>
-        function park() {
-            var before = document.getElementById("beforePark");
-            var after = document.getElementById("afterPark");
-            before.style.display = "none";
-            after.style.display = "block";
-        }
-        function back() {
-            var before = document.getElementById("beforePark");
-            var after = document.getElementById("afterPark");
-            before.style.display = "block";
-            after.style.display = "none";
-        }
-    </script>
+        var after = document.getElementById("afterPark");
+        after.style.display = "block";
 
+        var app = document.getElementById("appStart");
+        app.style.display = "block";
+    }
+    function park() {
+        console.log("Parking");
+        var targetElement = document.getElementById("user-car");
+        targetElement.className = "animate-park";
 
-    <!--<img src="./img/car_topview_right.png" width="200"><br><br>
-    <img src="./img/car_topview_left.png" width="200">
-    <img src="./img/car_topview_right.png" width="200">-->
+        var app = document.getElementById("appEnd");
+        app.style.display = "block";
+
+        var app = document.getElementById("appStart");
+        app.style.display = "none";
+    }
+    function back() {
+        var targetElement = document.getElementById("user-car");
+        targetElement.className = "reset";
+
+        var after = document.getElementById("afterPark");
+        after.style.display = "none";
+
+        var app = document.getElementById("appEnd");
+        app.style.display = "none";
+
+        var app = document.getElementById("appStart");
+        app.style.display = "none";
+    }
+</script>
 </body>
 </html>
