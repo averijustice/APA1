@@ -21,8 +21,8 @@
         }
 
         #user-car {
-            top: 200px;
-            left: 210px;
+            top: 300px;
+            left: 240px;
         }
 
         .animate-scan {
@@ -48,32 +48,32 @@
                 margin-left: 0px;
             }
             to {
-                margin-top: 200px;
-                margin-left: 220px;
+                margin-top: 300px;
+                margin-left: 240px;
             }
         }
 
         @keyframes move-forward {
 
             from {
-                margin-top: 200px;
-                margin-left: 220px;
+                margin-top: 300px;
+                margin-left: 240px;
             }
 
             to {
                 margin-top: 0px;
-                margin-left: 220px;
+                margin-left: 240px;
             }
         }
 
         @keyframes perpendicular-park {
             from {
                 margin-top: 0px;
-                margin-left: 220px;
+                margin-left: 240px;
             }
             50% {
                 margin-top: 85px;
-                margin-left: 220px;
+                margin-left: 240px;
             }
             to {
                 margin-top:115px;
@@ -87,14 +87,19 @@
 <h1>Scenario 3</h1>
 <p>Demonstrate a normal perpendicular parking scenario. The user will use the app to control the system from outside of the car. </p>
 <div class="parent">
-    <button onclick="scan()" style="alignment: right">Start system</button>
+    <button id="startButton" onclick="start()" style="alignment: right">Start system</button>
+    <button id="parkTypeButton" onclick="drive()" style="alignment: right; display: none;">Perpendicular</button>
+    <button id="scanButton" onclick="scanning()" style="alignment: right; display: none;">Drive</button>
     <div id="afterPark" style="display: none">
         <button onclick="park()" style="alignment: right">Park</button> <br>
         <button onclick="back()" style="alignment: right">Reset</button>
     </div>
     <div class="app">
-        <img style="display: none" id="appStart" src="./img/FordPassAppDraft.png" width="100" style="left: 200px" alt="FordPass App image">
-        <img style="display: none" id="appEnd" src="./img/FordPassAppCompleteDraft.png" width="100" style="left: 200px" alt="FordPass App image">
+        <img style="display: block; left: 200px" id="appBegin" src="img/StartSystemApp.png" width="200" alt="FordPass App image">
+        <img style="display: none; left: 200px" id="appParkingType" src="img/ParkingTypeApp.png" width="200" alt="FordPass App image">
+        <img style="display: none; left: 200px" id="appScanning" src="img/ScanningApp.png" width="200" alt="FordPass App image">
+        <img style="display: none; left: 200px" id="appSpotDetected" src="./img/SpotDetectedApp.png" width="200" alt="FordPass App image">
+        <img style="display: none; left: 200px" id="appEnd" src="./img/ManeuverCompleteApp.png" width="200" alt="FordPass App image">
     </div>
     <br>
     <div id="beforePark" class="child parked-cars" style="display: inline-block">
@@ -107,7 +112,8 @@
     </div>
 </div>
 <script>
-    function scan() {
+    /* Display Spot Detected App and Park and Reset Buttons. */
+    function scanning() {
         var targetElement = document.getElementById("user-car");
         // Changing user-car's class to "animate-scan" triggers the animations
         targetElement.className = "animate-scan";
@@ -115,9 +121,29 @@
         var after = document.getElementById("afterPark");
         after.style.display = "block";
 
-        var app = document.getElementById("appStart");
-        app.style.display = "block";
+        var app1 = document.getElementById("appSpotDetected");
+        app1.style.display = "block";
+
+        var app2 = document.getElementById("appEnd");
+        app2.style.display = "none";
+
+        var app3 = document.getElementById("appBegin");
+        app3.style.display = "none";
+
+        var app4 = document.getElementById("appParkingType");
+        app4.style.display = "none";
+
+        var app5 = document.getElementById("parkTypeButton");
+        app5.style.display = "none";
+
+        var app6 = document.getElementById("appScanning");
+        app6.style.display = "none";
+
+        var app6 = document.getElementById("scanButton");
+        app6.style.display = "none";
     }
+
+    /* Display Maneuver Complete App */
     function park() {
         console.log("Parking");
         var targetElement = document.getElementById("user-car");
@@ -126,20 +152,85 @@
         var app = document.getElementById("appEnd");
         app.style.display = "block";
 
-        var app = document.getElementById("appStart");
+        var app = document.getElementById("appSpotDetected");
+        app.style.display = "none";
+
+        var app = document.getElementById("scanButton");
         app.style.display = "none";
     }
+
+    /* Reset to original positions */
     function back() {
         var targetElement = document.getElementById("user-car");
         targetElement.className = "reset";
 
+        var app = document.getElementById("startButton");
+        app.style.display = "block";
+
         var after = document.getElementById("afterPark");
         after.style.display = "none";
+
+        var app = document.getElementById("appBegin");
+        app.style.display = "block";
 
         var app = document.getElementById("appEnd");
         app.style.display = "none";
 
-        var app = document.getElementById("appStart");
+        var app = document.getElementById("appSpotDetected");
+        app.style.display = "none";
+
+        var app = document.getElementById("scanButton");
+        app.style.display = "none";
+    }
+
+    /* Display Parking Type App and Perpendicular button */
+    function start() {
+        var after = document.getElementById("afterPark");
+        after.style.display = "none";
+
+        var app = document.getElementById("appParkingType");
+        app.style.display = "block";
+
+        var app = document.getElementById("parkTypeButton");
+        app.style.display = "block";
+
+        var app = document.getElementById("appBegin");
+        app.style.display = "none";
+
+        var app = document.getElementById("appEnd");
+        app.style.display = "none";
+
+        var app = document.getElementById("appSpotDetected");
+        app.style.display = "none";
+
+        var app = document.getElementById("startButton");
+        app.style.display = "none";
+    }
+
+    /* Display Scanning Please Drive App*/
+    function drive() {
+        var app = document.getElementById("appScanning");
+        app.style.display = "block";
+
+        var app = document.getElementById("scanButton");
+        app.style.display = "block";
+
+        var app = document.getElementById("appParkingType");
+        app.style.display = "none";
+
+        var app = document.getElementById("parkTypeButton");
+        app.style.display = "none";
+
+        var app = document.getElementById("appBegin");
+        app.style.display = "none";
+
+        var app = document.getElementById("appEnd");
+        app.style.display = "none";
+
+        var app = document.getElementById("appSpotDetected");
+        app.style.display = "none";
+
+        var app = document.getElementById("startButton");
         app.style.display = "none";
     }
 </script>
